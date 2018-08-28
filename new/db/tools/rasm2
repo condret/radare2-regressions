@@ -260,13 +260,6 @@ EXPECT=<<RUN
 0x00000220   4                 060054e1  cmp r4, r6
 RUN
 
-NAME=rasm2 esil output # ldrls pc, [pc, r3, lsl 2]
-FILE=-
-CMDS=!rasm2 -a arm -b32 -E 03f19f97
-EXPECT=<<RUN
-cf,!,?{,zf,?{,2,2,8,$$,+,>>,<<,2,r3,<<,+,0xffffffff,&,[4],0xffffffff,&,pc,=
-RUN
-
 NAME=rasm2 endian test 1
 FILE=-
 CMDS=!rasm2 -e -a arm -b 32 -d 0ad0a0e1

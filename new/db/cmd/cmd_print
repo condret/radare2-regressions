@@ -200,7 +200,7 @@ RUN
 
 NAME=pij 3
 FILE=malloc://512
-EXPECT='[{"offset":0,"val":1,"esil":"1,rax,=","refptr":false,"fcn_addr":0,"fcn_last":0,"size":5,"opcode":"mov eax, 1","disasm":"mov eax, 1","bytes":"b801000000","family":"cpu","type":"mov","reloc":false,"type_num":9,"type2_num":0},{"offset":5,"esil":"rcx,rdx,==,$z,zf,=,$b64,cf,=,$p,pf,=,$s,sf,=,$o,of,=","refptr":false,"fcn_addr":0,"fcn_last":0,"size":3,"opcode":"cmp rdx, rcx","disasm":"cmp rdx, rcx","bytes":"4839ca","family":"cpu","type":"cmp","reloc":false,"type_num":15,"type2_num":0},{"offset":8,"esil":"sf,of,!,^,zf,!,&,?{,10,rip,=,}","refptr":false,"fcn_addr":0,"fcn_last":0,"size":2,"opcode":"jg 0xa","disasm":"jg 0xa","bytes":"7f00","family":"cpu","type":"cjmp","reloc":false,"type_num":2147483649,"type2_num":0,"jump":10,"fail":10}]
+EXPECT='[{"offset":0,"val":1,"esil":"1,rax,=","refptr":false,"fcn_addr":0,"fcn_last":0,"size":5,"opcode":"mov eax, 1","disasm":"mov eax, 1","bytes":"b801000000","family":"cpu","type":"mov","reloc":false,"type_num":9,"type2_num":0},{"offset":5,"esil":"rcx,rdx,==,$z,zf,:=,64,$b,cf,:=,$p,pf,:=,$s,sf,:=,$o,of,:=","refptr":false,"fcn_addr":0,"fcn_last":0,"size":3,"opcode":"cmp rdx, rcx","disasm":"cmp rdx, rcx","bytes":"4839ca","family":"cpu","type":"cmp","reloc":false,"type_num":15,"type2_num":0},{"offset":8,"esil":"sf,of,!,^,zf,!,&,?{,10,rip,=,}","refptr":false,"fcn_addr":0,"fcn_last":0,"size":2,"opcode":"jg 0xa","disasm":"jg 0xa","bytes":"7f00","family":"cpu","type":"cjmp","reloc":false,"type_num":2147483649,"type2_num":0,"jump":10,"fail":10}]
 '
 CMDS=<<EOF
 e asm.arch=x86
@@ -369,7 +369,7 @@ RUN
 
 NAME=pij 3 (2)
 FILE=malloc://512
-EXPECT='[{"offset":0,"val":1,"esil":"1,rax,=","refptr":false,"fcn_addr":0,"fcn_last":0,"size":5,"opcode":"mov eax, 1","disasm":"mov eax, 1","bytes":"b801000000","family":"cpu","type":"mov","reloc":false,"type_num":9,"type2_num":0},{"offset":5,"esil":"rcx,rdx,==,$z,zf,=,$b64,cf,=,$p,pf,=,$s,sf,=,$o,of,=","refptr":false,"fcn_addr":0,"fcn_last":0,"size":3,"opcode":"cmp rdx, rcx","disasm":"cmp rdx, rcx","bytes":"4839ca","family":"cpu","type":"cmp","reloc":false,"type_num":15,"type2_num":0},{"offset":8,"esil":"sf,of,!,^,zf,!,&,?{,10,rip,=,}","refptr":false,"fcn_addr":0,"fcn_last":0,"size":2,"opcode":"jg 0xa","disasm":"jg 0xa","bytes":"7f00","family":"cpu","type":"cjmp","reloc":false,"type_num":2147483649,"type2_num":0,"jump":10,"fail":10}]
+EXPECT='[{"offset":0,"val":1,"esil":"1,rax,=","refptr":false,"fcn_addr":0,"fcn_last":0,"size":5,"opcode":"mov eax, 1","disasm":"mov eax, 1","bytes":"b801000000","family":"cpu","type":"mov","reloc":false,"type_num":9,"type2_num":0},{"offset":5,"esil":"rcx,rdx,==,$z,zf,:=,64,$b,cf,:=,$p,pf,:=,$s,sf,:=,$o,of,:=","refptr":false,"fcn_addr":0,"fcn_last":0,"size":3,"opcode":"cmp rdx, rcx","disasm":"cmp rdx, rcx","bytes":"4839ca","family":"cpu","type":"cmp","reloc":false,"type_num":15,"type2_num":0},{"offset":8,"esil":"sf,of,!,^,zf,!,&,?{,10,rip,=,}","refptr":false,"fcn_addr":0,"fcn_last":0,"size":2,"opcode":"jg 0xa","disasm":"jg 0xa","bytes":"7f00","family":"cpu","type":"cjmp","reloc":false,"type_num":2147483649,"type2_num":0,"jump":10,"fail":10}]
 '
 CMDS=<<EOF
 e asm.arch=x86
@@ -417,7 +417,7 @@ FILE=malloc://512
 EXPECT='[
   {
     "offset": 3,
-    "esil": "al,rax,+=[1],$o,of,=,$s,sf,=,$z,zf,=,$c7,cf,=,$p,pf,=",
+    "esil": "al,rax,+=[1],$o,of,:=,$s,sf,:=,$z,zf,:=,7,$c,cf,:=,$p,pf,:=",
     "refptr": false,
     "fcn_addr": 0,
     "fcn_last": 0,
@@ -433,7 +433,7 @@ EXPECT='[
   },
   {
     "offset": 5,
-    "esil": "rcx,rdx,==,$z,zf,=,$b64,cf,=,$p,pf,=,$s,sf,=,$o,of,=",
+    "esil": "rcx,rdx,==,$z,zf,:=,64,$b,cf,:=,$p,pf,:=,$s,sf,:=,$o,of,:=",
     "refptr": false,
     "fcn_addr": 0,
     "fcn_last": 0,

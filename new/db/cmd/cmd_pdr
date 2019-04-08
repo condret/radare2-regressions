@@ -103,7 +103,7 @@ EXPECT=%
   },
   {
     "offset": 3,
-    "esil": "al,rax,+=[1],$o,of,=,$s,sf,=,$z,zf,=,$c7,cf,=,$p,pf,=",
+    "esil": "al,rax,+=[1],$o,of,:=,$s,sf,:=,$z,zf,:=,7,$c,cf,:=,$p,pf,:=",
     "refptr": false,
     "fcn_addr": 0,
     "fcn_last": 17,
@@ -167,7 +167,7 @@ EXPECT=%
   {
     "offset": 9,
     "val": 253,
-    "esil": "$0,cf,=,1,253,-,1,<<,ebx,&,?{,$1,cf,=,},253,ebx,>>,ebx,=,$z,zf,=,$p,pf,=,$s,sf,=",
+    "esil": "0,cf,:=,1,253,-,1,<<,ebx,&,?{,1,cf,:=,},253,ebx,>>,ebx,=,$z,zf,:=,$p,pf,:=,$s,sf,:=",
     "refptr": false,
     "fcn_addr": 0,
     "fcn_last": 16,
@@ -266,7 +266,7 @@ jmp 3
   },
   {
     "offset": 3,
-    "esil": "al,rax,+=[1],$o,of,=,$s,sf,=,$z,zf,=,$c7,cf,=,$p,pf,=",
+    "esil": "al,rax,+=[1],$o,of,:=,$s,sf,:=,$z,zf,:=,7,$c,cf,:=,$p,pf,:=",
     "refptr": false,
     "fcn_addr": 0,
     "fcn_last": 17,
@@ -330,7 +330,7 @@ jmp 3
   {
     "offset": 9,
     "val": 253,
-    "esil": "$0,cf,=,1,253,-,1,<<,ebx,&,?{,$1,cf,=,},253,ebx,>>,ebx,=,$z,zf,=,$p,pf,=,$s,sf,=",
+    "esil": "0,cf,:=,1,253,-,1,<<,ebx,&,?{,1,cf,:=,},253,ebx,>>,ebx,=,$z,zf,:=,$p,pf,:=,$s,sf,:=",
     "refptr": false,
     "fcn_addr": 0,
     "fcn_last": 16,

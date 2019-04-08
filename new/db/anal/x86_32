@@ -3048,7 +3048,7 @@ EXPECT='[
     "opcode": "xor eax, eax",
     "disasm": "xor eax, eax",
     "mnemonic": "xor",
-    "esil": "eax,eax,^=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=",
+    "esil": "eax,eax,^=,$z,zf,:=,$p,pf,:=,$s,sf,:=,0,cf,:=,0,of,:=",
     "sign": false,
     "prefix": 0,
     "id": 334,

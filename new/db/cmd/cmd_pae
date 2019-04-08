@@ -2,7 +2,7 @@ NAME=capstone pade 31ed
 FILE=-
 ARGS=-a x86 -b 32
 EXPECT=<<EOF
-ebp,ebp,^=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=
+ebp,ebp,^=,$z,zf,:=,$p,pf,:=,$s,sf,:=,0,cf,:=,0,of,:=
 EOF
 CMDS=<<EOF
 pade 31ed
@@ -13,7 +13,7 @@ NAME=pade 40
 FILE=-
 ARGS=-a x86 -b 32
 EXPECT=<<EOF
-eax,++=,$o,of,=,$s,sf,=,$z,zf,=,$p,pf,=
+eax,++=,$o,of,:=,$s,sf,:=,$z,zf,:=,$p,pf,:=
 EOF
 CMDS=<<EOF
 pade 40
@@ -24,7 +24,7 @@ NAME=pade 48
 FILE=-
 ARGS=-a x86 -b 32
 EXPECT=<<EOF
-eax,--=,$o,of,=,$s,sf,=,$z,zf,=,$p,pf,=
+eax,--=,$o,of,:=,$s,sf,:=,$z,zf,:=,$p,pf,:=
 EOF
 CMDS=<<EOF
 pade 48

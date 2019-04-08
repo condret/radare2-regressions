@@ -406,7 +406,7 @@ FILE=../bins/elf/analysis/x86-helloworld-gcc
 EXPECT='[
   {
     "offset": 134513408,
-    "esil": "ebp,ebp,^=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=",
+    "esil": "ebp,ebp,^=,$z,zf,:=,$p,pf,:=,$s,sf,:=,0,cf,:=,0,of,:=",
     "refptr": false,
     "fcn_addr": 0,
     "fcn_last": 0,
@@ -461,7 +461,7 @@ EXPECT='[
   },
   {
     "offset": 134513413,
-    "esil": "4294967280,esp,&=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=",
+    "esil": "4294967280,esp,&=,$z,zf,:=,$p,pf,:=,$s,sf,:=,0,cf,:=,0,of,:=",
     "refptr": false,
     "fcn_addr": 0,
     "fcn_last": 0,

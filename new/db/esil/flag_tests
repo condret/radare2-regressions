@@ -9,7 +9,7 @@ EOF
 CMDS=<<EOF
 e asm.arch = x86
 e asm.bits = 64
-"ae 1,-1,==,POP,$o,of,=,$s,sf,=,$b64,cf,=,$z,zf,="
+"ae 1,-1,==,$o,of,:=,$s,sf,:=,64,$b,cf,:=,$z,zf,:="
 "aer?cf"
 "aer?sf"
 "aer?of"
@@ -28,7 +28,7 @@ EOF
 CMDS=<<EOF
 e asm.arch = x86
 e asm.bits = 64
-"ae -1,1,==,POP,$o,of,=,$s,sf,=,$b64,cf,=,$z,zf,="
+"ae -1,1,==,$o,of,:=,$s,sf,:=,64,$b,cf,:=,$z,zf,:="
 "aer?cf"
 "aer?sf"
 "aer?of"
@@ -47,7 +47,7 @@ EOF
 CMDS=<<EOF
 e asm.arch = x86
 e asm.bits = 64
-"ae 0x80000000,eax,=,0x80000000,ebx,=,eax,ebx,+=,$o,of,=,$s,sf,=,$c31,cf,=,$z,zf,="
+"ae 0x80000000,eax,:=,0x80000000,ebx,:=,eax,ebx,+=,$o,of,:=,$s,sf,:=,31,$c,cf,:=,$z,zf,:="
 "aer?cf"
 "aer?sf"
 "aer?of"
@@ -66,7 +66,7 @@ EOF
 CMDS=<<EOF
 e asm.arch = x86
 e asm.bits = 64
-"ae 0x70000000,eax,=,0x90000000,ebx,=,eax,ebx,+=,$o,of,=,$s,sf,=,$c31,cf,=,$z,zf,="
+"ae 0x70000000,eax,:=,0x90000000,ebx,:=,eax,ebx,+=,$o,of,:=,$s,sf,:=,31,$c,cf,:=,$z,zf,:="
 "aer?cf"
 "aer?sf"
 "aer?of"
@@ -85,7 +85,7 @@ EOF
 CMDS=<<EOF
 e asm.arch = x86
 e asm.bits = 64
-"ae 0x90000000,eax,=,0x70000000,ebx,=,eax,ebx,+=,$o,of,=,$s,sf,=,$c31,cf,=,$z,zf,="
+"ae 0x90000000,eax,:=,0x70000000,ebx,:=,eax,ebx,+=,$o,of,:=,$s,sf,:=,31,$c,cf,:=,$z,zf,:="
 "aer?cf"
 "aer?sf"
 "aer?of"
@@ -113,7 +113,7 @@ EOF
 CMDS=<<EOF
 e asm.arch = x86
 e asm.bits = 64
-"ae 2,eax,=,1,ebx,=,ebx,eax,<,$o,of,=,$s,sf,=,$c31,cf,=,$z,zf,=,sf,of,!=,==,$z,NUM"
+"ae 2,eax,:=,1,ebx,:=,ebx,eax,==,ebx,eax,<,$o,of,:=,$s,sf,:=,31,$c,cf,:=,$z,zf,:=,sf,of,!=,==,$z,NUM"
 EOF
 RUN
 
@@ -125,7 +125,7 @@ EOF
 CMDS=<<EOF
 e asm.arch = x86
 e asm.bits = 64
-"ae -1,eax,=,1,ebx,=,ebx,eax,<,$o,of,=,$s,sf,=,$c31,cf,=,$z,zf,=,cf,zf,|,!,==,$z,NUM"
+"ae -1,eax,:=,1,ebx,:=,ebx,eax,==,ebx,eax,<,$o,of,:=,$s,sf,:=,31,$c,cf,:=,$z,zf,:=,cf,zf,|,!,==,$z,NUM"
 EOF
 RUN
 

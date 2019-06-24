@@ -37,7 +37,7 @@ static void size(RBNode *a_) {
 	}
 }
 
-static int cmp(const void *a, const RBNode *b) {
+static int cmp(const void *a, const RBNode *b, void *user) {
 	return ((const struct Node *)a)->key - container_of (b, const struct Node, rb)->key;
 }
 
@@ -93,17 +93,17 @@ bool test_r_rbtree_bound(void) {
 
 	for (i = 0; i < 99; i++) {
 		x = make (i);
-		r_rbtree_insert (&tree, x, &x->rb, cmp);
+		r_rbtree_insert (&tree, x, &x->rb, cmp, NULL);
 	}
 
 	// lower_bound
-	it = r_rbtree_lower_bound_forward (tree, &key, cmp);
+	it = r_rbtree_lower_bound_forward (tree, &key, cmp, NULL);
 	i = key1;
 	r_rbtree_iter_while (it, x, struct Node, rb) {
 		mu_assert_eq (i, x->key, "lower_bound_forward");
 		i++;
 	}
-	it = r_rbtree_lower_bound_backward (tree, &key, cmp);
+	it = r_rbtree_lower_bound_backward (tree, &key, cmp, NULL);
 	i = key1 - 1;
 	r_rbtree_iter_while_prev (it, x, struct Node, rb) {
 		mu_assert_eq (i, x->key, "lower_bound_backward");
@@ -111,13 +111,13 @@ bool test_r_rbtree_bound(void) {
 	}
 
 	// upper_bound
-	it = r_rbtree_upper_bound_forward (tree, &key, cmp);
+	it = r_rbtree_upper_bound_forward (tree, &key, cmp, NULL);
 	i = key1 + 1;
 	r_rbtree_iter_while (it, x, struct Node, rb) {
 		mu_assert_eq (i, x->key, "upper_bound_forward");
 		i++;
 	}
-	it = r_rbtree_upper_bound_backward (tree, &key, cmp);
+	it = r_rbtree_upper_bound_backward (tree, &key, cmp, NULL);
 	i = key1;
 	r_rbtree_iter_while_prev (it, x, struct Node, rb) {
 		mu_assert_eq (i, x->key, "upper_bound_backward");
@@ -135,7 +135,7 @@ static bool insert_delete(int *a, int n, RBNodeSum sum) {
 
 	for (i = 0; i < n; i++) {
 		x = make (a[i]);
-		r_rbtree_aug_insert (&tree, x, &x->rb, cmp, sum);
+		r_rbtree_aug_insert (&tree, x, &x->rb, cmp, sum, NULL);
 		if (sum) {
 			mu_assert_eq (i + 1, container_of (tree, struct Node, rb)->size, "size");
 			mu_assert ("shape", check (tree));
@@ -145,9 +145,9 @@ static bool insert_delete(int *a, int n, RBNodeSum sum) {
 	random_iota (a, n);
 	for (i = 0; i < n; i++) {
 		struct Node x = {.key = a[i]};
-		t = r_rbtree_aug_delete (&tree, &x, cmp, freefn, sum);
+		t = r_rbtree_aug_delete (&tree, &x, cmp, freefn, sum, NULL);
 		mu_assert ("delete", t);
-		t = r_rbtree_aug_delete (&tree, &x, cmp, freefn, sum);
+		t = r_rbtree_aug_delete (&tree, &x, cmp, freefn, sum, NULL);
 		mu_assert ("delete non-existent", !t);
 		if (sum) {
 			if (i == n-1)
@@ -216,17 +216,17 @@ bool test_r_rbtree_augmented_insert_delete2(void) {
 	random_iota (a, N);
 	for (i = 0; i < N; i++) {
 		x = make (a[i] * 2);
-		r_rbtree_aug_insert (&tree, x, &x->rb, cmp, size);
+		r_rbtree_aug_insert (&tree, x, &x->rb, cmp, size, NULL);
 	}
 	for (i = 0; i < N; i++) {
 		struct Node x = {.key = a[i] * 2 + 1};
-		t = r_rbtree_aug_delete (&tree, &x, cmp, freefn, size);
+		t = r_rbtree_aug_delete (&tree, &x, cmp, freefn, size, NULL);
 		mu_assert ("delete non-existent", !t);
 		mu_assert_eq (N - i, container_of (tree, struct Node, rb)->size, "size");
 		mu_assert ("shape", check (tree));
 
 		x.key = a[i] * 2;
-		t = r_rbtree_aug_delete (&tree, &x, cmp, freefn, size);
+		t = r_rbtree_aug_delete (&tree, &x, cmp, freefn, size, NULL);
 		mu_assert ("delete", t);
 		mu_assert ("shape", check (tree));
 	}
@@ -243,7 +243,7 @@ bool test_r_rbtree_traverse(void) {
 
 	for (i = 0; i < 99; i++) {
 		x = make (i);
-		r_rbtree_insert (&tree, x, &x->rb, cmp);
+		r_rbtree_insert (&tree, x, &x->rb, cmp, NULL);
 	}
 	i = 0;
 	r_rbtree_foreach (tree, it, x, struct Node, rb) {
